@@ -1,88 +1,125 @@
 package com.google.firebase.quickstart.fcm;
 
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.ListActivity;
-import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import retrofit2.Call;
 
-public class PushListActivity extends ListActivity {
-    ListView listview;
-    PushAdapter adapter;
+public class PushListActivity extends AppCompatActivity {
+    RecyclerView recyclerView;
+
     ProgressDialog mProgressDialog;
     List<Push> pushList;
+
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    String phoneNumber="";
+    String token = "";
+    String sessionKey  = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_push_list);
+        phoneNumber= getIntent().getStringExtra("PHONE");
+        token= getIntent().getStringExtra("TOKEN");
+        token= getIntent().getStringExtra("SESSIONKEY");
 
-        new DownloadXML(PushListActivity.this).execute();
+        pushList = new ArrayList<>();
+        recyclerView = (RecyclerView) findViewById(R.id.push_recycle_view);
 
-    }
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
 
-    private class DownloadXML extends AsyncTask<Void, Void, Void> {
+        PushAdapter adapter  = new PushAdapter(pushList);
+        recyclerView.setAdapter(adapter);
 
-        private Context _context;
+        /*Call<List<Push>> c = RetroClient.getApiService().getData();
 
-        public DownloadXML(Context context) {
-            this._context = context;
+        try {
+            c.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            mProgressDialog = new ProgressDialog(PushListActivity.this);
-            mProgressDialog.setTitle("Загрузка данных");
-            mProgressDialog.setMessage("Загрузка...");
-            mProgressDialog.setIndeterminate(false);
-            mProgressDialog.show();
-        }
-        @Override
-        protected Void doInBackground(Void... params) {
-
-            //pushList =
-            // pushList xml load
-            ApiService api = RetroClient.getApiService();
-
-            /**
-             * Calling JSON
-             */
-            Call<List<Push> > call = api.getMyJSON();
-
-
-            return null;
-
-        }
-
-        @SuppressLint("WrongViewCast")
-        @Override
-        protected void onPostExecute(Void args) {
-
-
-            listview = (ListView) findViewById(R.id.list);
-
-            if (pushList != null) {
-
-                adapter = new PushAdapter(_context, pushList);
-
-                listview.setAdapter(adapter);
-                mProgressDialog.dismiss();
-            }else {
-                mProgressDialog.setTitle("Загрузка данных");
-                mProgressDialog.setMessage("Загрузка не удалась!");
-                //mProgressDialog.dismiss();
+        RetroClient.getApiService().getData().enqueue(new Callback<List<Push>>() {
+            @Override
+            public void onResponse(Call<List<Push>> call, Response<List<Push>> response) {
+                pushList.addAll(response.body());
+                recyclerView.getAdapter().notifyDataSetChanged();
             }
 
-        }
+            @Override
+            public void onFailure(Call<List<Push>> call, Throwable t) {
+                Toast.makeText(PushListActivity.this,"Error reading data from wscb",Toast.LENGTH_SHORT).show();
+            }
+        });*/
+        recyclerView = (RecyclerView) findViewById(R.id.push_recycle_view);
+        recyclerView.setHasFixedSize(true);
+
+
+        layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+        sendRequest();
     }
 
+    private  void sendRequest() {
+
+        String url = "http://192.168.0.100:8080/";//https://inetbank.zapsibkombank.ru:4443/";
+        String cmdUrl = url + "getData.jsp?";
+        String query = "";
+
+
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("appendParams", "true");
+        params.put("errorFormat", "json");
+        params.put("format", "json");
+        params.put("sessionKey",MainActivity.getSessionKey());
+        params.put("actionParam","ESBPushHistoryRq");
+        params.put("App","Inetbank");
+        params.put("DeviceType", "iPhone");
+
+        params.put("Token","aaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+        params.put("PhoneNumber","70000000001");
+        params.put("Page","1");
+
+
+
+        String esbPushHistory = WebService.sendPost(cmdUrl+getQueryString(params),"", params);
+
+        JSONParser jsonParser = new JSONParser(esbPushHistory);
+        jsonParser.parseJSON();
+        List<Push> pushList = jsonParser.getPushList();
+       // params.put("OldToken","aaaaaaaaaaaaaaaaaaaaaaaaaa");
+
+        //pushList
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        PushAdapter adapter  = new PushAdapter(pushList);
+        recyclerView.setAdapter(adapter);
+
+        Log.d( "1","1");
+    }
+
+    public static String getQueryString(Map<String, String> params){
+        String query = "";
+        for (Map.Entry<String, String> param : params.entrySet()) {
+            query += param.getKey()+"="+param.getValue()+"&";
+        }
+        return query ;
+    }
 }

@@ -1,7 +1,10 @@
 package com.google.firebase.quickstart.fcm;
 
+import org.xml.sax.helpers.XMLReaderFactory;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 public class RetroClient {
 
@@ -16,6 +19,7 @@ public class RetroClient {
     private static Retrofit getRetrofitInstance() {
         return new Retrofit.Builder()
                 .baseUrl(ROOT_URL)
+                .addConverterFactory(SimpleXmlConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
@@ -28,4 +32,7 @@ public class RetroClient {
     public static ApiService getApiService() {
         return getRetrofitInstance().create(ApiService.class);
     }
+
+
+
 }

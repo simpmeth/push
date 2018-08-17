@@ -16,6 +16,8 @@
 
 package com.google.firebase.quickstart.fcm;
 
+import android.app.Activity;
+import android.app.Application;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -24,6 +26,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.widget.TextView;
 
 
 import com.firebase.jobdispatcher.FirebaseJobDispatcher;
@@ -120,8 +123,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        Application application = getApplication();
+        Context applicationContext = application.getApplicationContext();
 
+        TextView textView = (TextView) ((Activity)applicationContext).findViewById(R.id.output);
 
+        textView.setText(remoteMessage.getNotification().getTitle()+" -- "+remoteMessage.getNotification().getBody());
 
         notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
     }

@@ -1,4 +1,4 @@
-#Mon Aug 13 14:03:44 YEKT 2018
-base.0=/Users/user/Downloads/messaging/app/build/intermediates/transforms/dexMerger/debug/2
+#Wed Aug 15 12:32:05 YEKT 2018
+base.0=/Users/user/Documents/GitHub/push/app/build/intermediates/transforms/dexMerger/debug/1
 path.0=classes.dex
 renamed.0=classes.dex

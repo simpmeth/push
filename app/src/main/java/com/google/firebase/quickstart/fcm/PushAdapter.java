@@ -1,80 +1,67 @@
 package com.google.firebase.quickstart.fcm;
 
-import android.content.Context;
+import android.os.Build;
+import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.RelativeLayout;
+
 import android.widget.TextView;
 
 import java.util.List;
 
-public class PushAdapter extends ArrayAdapter{
+public class PushAdapter extends RecyclerView.Adapter<PushAdapter.ViewHolder>{
 
-    List<Push> pushList;
-    Context context;
+    private List<Push> pushList;
+
     private LayoutInflater mInflater;
 
     // Constructors
-    public PushAdapter(Context context, List<Push> objects) {
-        super(context, 0, objects);
-        this.context = context;
-        this.mInflater = LayoutInflater.from(context);
-        pushList = objects;
+    public PushAdapter(List<Push> objects) {
+
+        this.pushList = objects;
     }
 
     @Override
-    public Push getItem(int position) {
-        return pushList.get(position);
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+       View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row ,parent,false);
+       return  new ViewHolder(v);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final ViewHolder vh;
-        if (convertView == null) {
-            View view = mInflater.inflate(R.layout.list_row, parent, false);
-            vh = ViewHolder.create((RelativeLayout) view);
-            view.setTag(vh);
-        } else {
-            vh = (ViewHolder) convertView.getTag();
-        }
-
-        Push item = getItem(position);
-
-        vh.time.setText(item.getTime());
-        vh.title.setText(item.getTitle());
-        vh.message.setText(item.getMessage());
-
-
-
-        return vh.rootView;
+    public void onBindViewHolder(ViewHolder holder, int position) {
+            Push  push =  pushList.get(position);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+                holder.time.setText(Html.fromHtml(push.getTime()));
+                holder.title.setText(Html.fromHtml(push.getTitle()));
+                holder.message.setText(Html.fromHtml(push.getMessage()));
+                holder.data.setText(Html.fromHtml(push.getData()));
+            }
     }
 
-    private static class ViewHolder {
-        public final RelativeLayout rootView;
+    @Override
+    public int getItemCount() {
+        if (pushList == null)
+        return 0;
+        return pushList.size();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder{
+
         public final TextView time;
         public final TextView title;
         public final TextView message;
         public final TextView data;
 
-        private ViewHolder(RelativeLayout rootView, TextView time, TextView title, TextView message, TextView data) {
-            this.rootView = rootView;
-            this.time = time;
-            this.title = title;
-            this.message = message;
-            this.data = data;
-        }
 
-        public static ViewHolder create(RelativeLayout rootView) {
+        public ViewHolder (View itemView) {
+            super(itemView);
+            time = (TextView) itemView.findViewById(R.id.col_time);
+            title= (TextView) itemView.findViewById(R.id.col_title);
+            message= (TextView) itemView.findViewById(R.id.col_message);
+            data= (TextView) itemView.findViewById(R.id.col_data);
 
-            TextView textViewTime = (TextView) rootView.findViewById(R.id.col_time);
-            TextView textViewTitle= (TextView) rootView.findViewById(R.id.col_title);
-            TextView textViewMessage= (TextView) rootView.findViewById(R.id.col_message);
-            TextView textViewData= (TextView) rootView.findViewById(R.id.col_data);
-
-
-            return new ViewHolder(rootView, textViewTime, textViewTitle, textViewMessage, textViewData);
         }
     }
 }
