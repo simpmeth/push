@@ -22,17 +22,15 @@ public class PushListActivity extends AppCompatActivity {
 
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-    String phoneNumber="";
-    String token = "";
-    String sessionKey  = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_push_list);
-        phoneNumber= getIntent().getStringExtra("PHONE");
-        token= getIntent().getStringExtra("TOKEN");
-        token= getIntent().getStringExtra("SESSIONKEY");
+        String phoneNumber= getIntent().getStringExtra("PHONE");
+        String token= getIntent().getStringExtra("TOKEN");
+        String sessionKey= getIntent().getStringExtra("SESSIONKEY");
 
         pushList = new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.push_recycle_view);
@@ -44,38 +42,19 @@ public class PushListActivity extends AppCompatActivity {
         PushAdapter adapter  = new PushAdapter(pushList);
         recyclerView.setAdapter(adapter);
 
-        /*Call<List<Push>> c = RetroClient.getApiService().getData();
 
-        try {
-            c.execute();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        RetroClient.getApiService().getData().enqueue(new Callback<List<Push>>() {
-            @Override
-            public void onResponse(Call<List<Push>> call, Response<List<Push>> response) {
-                pushList.addAll(response.body());
-                recyclerView.getAdapter().notifyDataSetChanged();
-            }
-
-            @Override
-            public void onFailure(Call<List<Push>> call, Throwable t) {
-                Toast.makeText(PushListActivity.this,"Error reading data from wscb",Toast.LENGTH_SHORT).show();
-            }
-        });*/
         recyclerView = (RecyclerView) findViewById(R.id.push_recycle_view);
         recyclerView.setHasFixedSize(true);
 
 
         layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
-        sendRequest();
+        sendRequest(phoneNumber,token,sessionKey);
     }
 
-    private  void sendRequest() {
+    private  void sendRequest(String phoneNumber,String token,String sessionKey) {
 
-        String url = "http://192.168.0.100:8080/";//https://inetbank.zapsibkombank.ru:4443/";
+        String url = getString(R.string.wscbUrl);//https://inetbank.zapsibkombank.ru:4443/";
         String cmdUrl = url + "getData.jsp?";
         String query = "";
 
@@ -85,14 +64,14 @@ public class PushListActivity extends AppCompatActivity {
         params.put("appendParams", "true");
         params.put("errorFormat", "json");
         params.put("format", "json");
-        params.put("sessionKey",MainActivity.getSessionKey());
+        params.put("sessionKey",sessionKey);
         params.put("actionParam","ESBPushHistoryRq");
         params.put("App","Inetbank");
         params.put("DeviceType", "iPhone");
 
-        params.put("Token","aaaaaaaaaaaaaaaaaaaaaaaaaa");
+        params.put("Token",token);
 
-        params.put("PhoneNumber","70000000001");
+        params.put("PhoneNumber",phoneNumber);
         params.put("Page","1");
 
 
@@ -102,7 +81,7 @@ public class PushListActivity extends AppCompatActivity {
         JSONParser jsonParser = new JSONParser(esbPushHistory);
         jsonParser.parseJSON();
         List<Push> pushList = jsonParser.getPushList();
-       // params.put("OldToken","aaaaaaaaaaaaaaaaaaaaaaaaaa");
+
 
         //pushList
 

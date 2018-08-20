@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        final String url = "http://192.168.0.100:8080/";//https://inetbank.zapsibkombank.ru:4443/";
+        final String url = getString(R.string.wscbUrl);//https://inetbank.zapsibkombank.ru:4443/";
         final String cmdUrl = url + "getData.jsp?";
         final String query = "";
 
