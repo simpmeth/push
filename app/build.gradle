@@ -59,10 +59,10 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0' //Конвертер JSON, можно, если предпочитаете, использовать Jackson
     implementation 'com.android.support:recyclerview-v7:26.+' //RecyclerView
-    compile 'com.github.bumptech.glide:glide:3.5.2'
+    implementation 'com.github.bumptech.glide:glide:3.5.2'
 
-    compile "com.android.support:recyclerview-v7:26.0.1"
-    compile 'com.android.volley:volley:1.0.0'
+    implementation "com.android.support:recyclerview-v7:26.0.1"
+    implementation 'com.android.volley:volley:1.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

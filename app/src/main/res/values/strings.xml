@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FCM WSCB alerter</string>
+    <string name="app_name">WSCB alerter</string>
     <string name="quickstart_message">Click the SUBSCRIBE TO NEWS button below to subscribe to the
         news topic. Messages sent to the news topic will be received. The LOG TOKEN button logs the
         InstanceID token to logcat.</string>
@@ -20,4 +20,6 @@
     <string name="title_activity_list">ListActivity</string>
     <string name="title_activity_push_list">PushList</string>
     <string name="wscbUrl">https://inetbank.zapsibkombank.ru:4443/</string>
+    <string name="no_data_available">История сообщений пуста</string>
+    <!-- <string name="wscbUrl">https://5.23.54.39:8470/</string>-->
 </resources>

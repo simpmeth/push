@@ -4,7 +4,7 @@
             "outputFile": "/Users/user/Documents/GitHub/push/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt/values-pt.xml",
             "map": [
                 {
-                    "source": "/Users/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/43a3b4ec73333db9238c89306eddbd67/res/values-pt/values-pt.xml",
+                    "source": "/Users/user/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/37775f2604f0e78fdcd8e201d9aebe84/res/values-pt/values-pt.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

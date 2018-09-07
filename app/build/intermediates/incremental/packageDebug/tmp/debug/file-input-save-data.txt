@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Aug 15 12:32:06 YEKT 2018
+#Fri Sep 07 11:00:33 YEKT 2018
 2.base=/Users/user/Documents/GitHub/push/app/build/intermediates/transforms/mergeJniLibs/debug/0
 5.set=DEX
 0.path=lib/x86/libLiteCoreJNI.so
