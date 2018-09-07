@@ -1,27 +1,58 @@
 {
   "project_info": {
-    "project_number": "466915192587",
-    "firebase_url": "https://testproject-2fb62.firebaseio.com",
-    "project_id": "testproject-2fb62",
-    "storage_bucket": "testproject-2fb62.appspot.com"
+    "project_number": "608935851641",
+    "firebase_url": "https://wscbpushnotification.firebaseio.com",
+    "project_id": "wscbpushnotification",
+    "storage_bucket": "wscbpushnotification.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:466915192587:android:5920de3503a2d18c",
+        "mobilesdk_app_id": "1:608935851641:android:7f981c7e04d9ee60",
         "android_client_info": {
-          "package_name": "com.google.firebase.quickstart.fcm"
+          "package_name": "com.alerter.zapsibkombank"
         }
       },
       "oauth_client": [
         {
-          "client_id": "466915192587-3j0le3nman5k3lims3p8i9hjiemshgu4.apps.googleusercontent.com",
+          "client_id": "608935851641-omuo32a46s487tp1htftdkhtkj280fpp.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA2RIxURmBOHDNG5CNe7Qo8d3aSnijFvyg"
+          "current_key": "AIzaSyClShtXacbS3fxhPyMxCp2SkA545zKEoCM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608935851641:android:b49dba5b0bbd2c58",
+        "android_client_info": {
+          "package_name": "com.inetbank.zapsibkombank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608935851641-omuo32a46s487tp1htftdkhtkj280fpp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClShtXacbS3fxhPyMxCp2SkA545zKEoCM"
         }
       ],
       "services": {

@@ -9,7 +9,7 @@ package com.alerter.zapsibkombank;
 
 public final class Manifest {
   public static final class permission {
-    public static final String C2D_MESSAGE="com.google.firebase.quickstart.fcm.permission.C2D_MESSAGE";
+    public static final String C2D_MESSAGE="com.alerter.zapsibkombank.permission.C2D_MESSAGE";
   }
 
 }

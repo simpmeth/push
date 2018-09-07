@@ -457,7 +457,7 @@ ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/
 		ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:24:72-107
 	android:name
 		ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:24:17-71
-permission#com.google.firebase.quickstart.fcm.permission.C2D_MESSAGE
+permission#com.alerter.zapsibkombank.permission.C2D_MESSAGE
 ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:24:5-109
 	android:protectionLevel
 		ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:24:72-107
@@ -467,7 +467,7 @@ uses-permission#${applicationId}.permission.C2D_MESSAGE
 ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:26:5-78
 	android:name
 		ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:26:22-76
-uses-permission#com.google.firebase.quickstart.fcm.permission.C2D_MESSAGE
+uses-permission#com.alerter.zapsibkombank.permission.C2D_MESSAGE
 ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:26:5-78
 	android:name
 		ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:26:22-76
@@ -481,7 +481,7 @@ ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/
 		ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:30:19-84
 intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:${applicationId}
 ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:31:13-34:29
-intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:com.google.firebase.quickstart.fcm
+intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE+category:name:com.alerter.zapsibkombank
 ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:31:13-34:29
 action#com.google.android.c2dm.intent.RECEIVE
 ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:32:17-80
@@ -491,7 +491,7 @@ category#${applicationId}
 ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:33:17-60
 	android:name
 		ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:33:27-58
-category#com.google.firebase.quickstart.fcm
+category#com.alerter.zapsibkombank
 ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:33:17-60
 	android:name
 		ADDED from [com.google.firebase:firebase-iid:11.4.2] /Users/user/.gradle/caches/transforms-1/files-1.1/firebase-iid-11.4.2.aar/65d1516f47c5670f9640ce158da99b45/AndroidManifest.xml:33:27-58
